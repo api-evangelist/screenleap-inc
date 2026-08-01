@@ -1,0 +1,25 @@
+generated: "2026-07-21"
+method: derived
+source: openapi/screenleap-inc-screen-sharing-openapi.yml
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Auth is apiKey (accountid + authtoken) headers; no oauth2 scheme.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are plain HTTP status codes; no application/problem+json envelope.
+  - id: json-api
+    conforms: false
+  - id: rest-json
+    conforms: true
+    evidence: REST-style resources serialized as JSON over HTTPS.
+  - id: webhooks
+    conforms: true
+    evidence: Session events delivered via HTTP POST to a per-session apiCallbackUrl.
+  - id: pagination
+    conforms: false
+    evidence: List endpoints are filter-based with a 1000-result cap; no cursor/offset paging.
+  - id: idempotency
+    conforms: false

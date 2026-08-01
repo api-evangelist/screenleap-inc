@@ -1,0 +1,8 @@
+generated: "2026-07-21"
+method: generated
+source: openapi/screenleap-inc-screen-sharing-openapi.yml
+skills:
+  - file: screenleap-inc-start-and-embed-share.md
+    name: Start and embed a screen share session
+    api: openapi/screenleap-inc-screen-sharing-openapi.yml
+    operations: [createScreenShare, getScreenShare, stopScreenShare]

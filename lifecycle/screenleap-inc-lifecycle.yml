@@ -1,0 +1,20 @@
+generated: "2026-07-21"
+method: searched
+source: https://www.screenleap.com/api/native/update
+versioning:
+  scheme: uri-path
+  current: "2"
+  docs: https://www.screenleap.com/api/native/doc
+deprecation:
+  policy_url: https://www.screenleap.com/api/native/update
+  sunset_header: false
+  notes: >-
+    Version 2 superseded version 1 (2013) with breaking changes. Several v1
+    options were deprecated rather than removed: showStopButton became
+    hideStopButton; titleLinkUrl was replaced by title; the callback-on-end,
+    redirect-on-end and redirect-on-error URL settings were deprecated in favor
+    of Developer Account Settings. No formal dated sunset for v1 is published.
+status_page: null
+sla:
+  url: null
+deprecated_operations: []

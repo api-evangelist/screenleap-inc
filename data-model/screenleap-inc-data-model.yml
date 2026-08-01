@@ -1,0 +1,21 @@
+generated: "2026-07-21"
+method: derived
+source: openapi/screenleap-inc-screen-sharing-openapi.yml
+entities:
+  - name: ScreenShare
+    id: sessionId
+    id_format: 9-digit share code
+    fields: [dateCreated, accountId, externalId, isSecure, isActive, startTime, endTime, totalViewers, userMinutes, costInCents, title, apiCallbackUrl]
+  - name: Participant
+    id: participantId
+    id_format: 6-digit code
+    fields: [externalId, userAgent, sharingStartTime, sharingEndTime, durationInMinutes, isPresenter]
+relationships:
+  - from: ScreenShare
+    to: Participant
+    type: has_many
+    via: participants
+  - from: Participant
+    to: ScreenShare
+    type: belongs_to
+    via: sessionId

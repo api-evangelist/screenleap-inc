@@ -1,0 +1,28 @@
+generated: "2026-07-21"
+method: derived
+format: http-status
+source: openapi/screenleap-inc-screen-sharing-openapi.yml
+docs: https://www.screenleap.com/api/native/doc/http-calls
+notes: >-
+  Screenleap signals errors with plain HTTP status codes; no
+  application/problem+json (RFC 9457) envelope is documented.
+problems:
+  - status: 401
+    title: Unauthorized
+    detail: Invalid or missing accountid / authtoken credentials.
+    source_operations:
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#createScreenShare
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#getScreenShare
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#listScreenShares
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#listRecentScreenShares
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#stopScreenShare
+  - status: 403
+    title: Forbidden
+    detail: Credentials are valid but not authorized to act on the requested share session.
+    source_operations:
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#stopScreenShare
+  - status: 404
+    title: Not Found
+    detail: The share code does not exist or the session has already ended.
+    source_operations:
+      - openapi/screenleap-inc-screen-sharing-openapi.yml#stopScreenShare

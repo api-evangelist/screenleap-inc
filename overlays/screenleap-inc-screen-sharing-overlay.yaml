@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Screenleap Screen Sharing API
+  version: 1.0.0
+extends: openapi/screenleap-inc-screen-sharing-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: "2026-07-21"
+      x-api-evangelist-provenance: >-
+        Reconstructed from public HTTP Calls documentation; not a
+        Screenleap-published specification.
+  - target: $.info
+    update:
+      x-webhooks: asyncapi/screenleap-inc-webhooks.yml
+      x-conventions: conventions/screenleap-inc-conventions.yml
+      x-error-catalog: errors/screenleap-inc-problem-types.yml

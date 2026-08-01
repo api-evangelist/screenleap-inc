@@ -1,0 +1,23 @@
+generated: "2026-07-21"
+method: searched
+type: Webhooks
+source: https://www.screenleap.com/api/native/doc/http-calls
+docs: https://www.screenleap.com/api/native/update
+summary: >-
+  Screenleap does not publish an AsyncAPI document, but it delivers session
+  lifecycle events to a caller-configured webhook. Each screen-share carries an
+  apiCallbackUrl; Screenleap POSTs to it as the session changes state. Callback
+  and redirect URLs are configured in Developer Account Settings.
+transport: http-post
+events:
+  - name: screenShareEnded
+    delivery: HTTP POST to apiCallbackUrl
+    description: >-
+      Fired when a screen share session ends. In v2 the client-side callback was
+      renamed screenleap.onScreenShareEnd and no longer passes session data
+      inline; fetch session detail via GET /screen-shares/{screenShareCode}.
+    correlate_via: sessionId / externalId
+notes: >-
+  No AsyncAPI/event-schema document is published; this captures the documented
+  webhook surface only. Not fabricated beyond what the HTTP Calls and v2 update
+  docs describe.

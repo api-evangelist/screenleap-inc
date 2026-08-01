@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: Screenleap Screen Sharing API
+  version: "2"
+  description: >-
+    The Screenleap API adds live screen sharing, video conferencing, audio
+    conferencing and chat to websites and online products. Sessions are created
+    server-to-server over a REST/JSON HTTP interface; the presenter runs the
+    hosted screenleap.js loader and viewers open a returned viewer URL. This
+    OpenAPI was reconstructed from the public HTTP Calls documentation
+    (https://www.screenleap.com/api/native/doc/http-calls) and is not published
+    by Screenleap.
+  x-provenance:
+    method: generated
+    generated: "2026-07-21"
+    source: https://www.screenleap.com/api/native/doc/http-calls
+  contact:
+    name: Screenleap API
+    url: https://www.screenleap.com/api
+  termsOfService: https://www.screenleap.com/api/legal/acceptable-use
+servers:
+  - url: https://api.screenleap.com/v2
+    description: Production
+security:
+  - accountId: []
+    authToken: []
+tags:
+  - name: Screen Shares
+    description: Create, retrieve, list and stop screen sharing sessions.
+paths:
+  /screen-shares:
+    post:
+      operationId: createScreenShare
+      tags: [Screen Shares]
+      summary: Create a screen share session
+      description: >-
+        Initiates a new screen sharing session and returns the screenShareData
+        the presenter app needs plus the viewerUrl to open for viewers.
+      parameters:
+        - { name: externalId, in: query, required: false, schema: { type: string, maxLength: 192 }, description: External identifier used to correlate and filter sessions. }
+        - { name: showScreenleapBranding, in: query, required: false, schema: { type: boolean } }
+        - { name: presenterFirstName, in: query, required: false, schema: { type: string } }
+        - { name: presenterLastName, in: query, required: false, schema: { type: string } }
+        - { name: screenSharingMode, in: query, required: false, schema: { type: string, enum: [NONE, SCREEN, SCREEN_WITH_EMBEDDED_PHOTO, SCREEN_WITH_EMBEDDED_VIDEO], default: SCREEN } }
+        - { name: videoMode, in: query, required: false, schema: { type: string, enum: [NONE, BROADCAST, FULL], default: FULL } }
+        - { name: initialMediaSource, in: query, required: false, schema: { type: string, enum: [SCREEN, CAMERA] } }
+        - { name: useBroadcastAudio, in: query, required: false, schema: { type: boolean } }
+        - { name: useComputerAudio, in: query, required: false, schema: { type: boolean } }
+        - { name: allowRecording, in: query, required: false, schema: { type: boolean } }
+        - { name: recordOnStart, in: query, required: false, schema: { type: boolean } }
+        - { name: allowChat, in: query, required: false, schema: { type: boolean } }
+        - { name: title, in: query, required: false, schema: { type: string } }
+        - { name: maxConcurrentViewers, in: query, required: false, schema: { type: integer } }
+      responses:
+        "200":
+          description: Session created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  screenShareData: { type: object, description: Opaque configuration passed to screenleap.startSharing. }
+                  viewerUrl: { type: string, format: uri }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+    get:
+      operationId: listScreenShares
+      tags: [Screen Shares]
+      summary: Retrieve share sessions
+      description: Query successful share sessions matching the supplied filters (max 1000 results).
+      parameters:
+        - { name: startedBefore, in: query, required: false, schema: { type: integer, format: int64 }, description: Milliseconds from epoch. }
+        - { name: startedAfter, in: query, required: false, schema: { type: integer, format: int64 }, description: Milliseconds from epoch. }
+        - { name: endedBefore, in: query, required: false, schema: { type: integer, format: int64 }, description: Milliseconds from epoch. }
+        - { name: endedAfter, in: query, required: false, schema: { type: integer, format: int64 }, description: Milliseconds from epoch. }
+        - { name: dateFormat, in: query, required: false, schema: { type: string }, description: Java SimpleDateFormat pattern. }
+        - { name: externalId, in: query, required: false, schema: { type: string } }
+      responses:
+        "200":
+          description: Array of matching sessions.
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: "#/components/schemas/ScreenShare" } }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+  /screen-shares/{screenShareCode}:
+    get:
+      operationId: getScreenShare
+      tags: [Screen Shares]
+      summary: Retrieve a share session
+      parameters:
+        - { name: screenShareCode, in: path, required: true, schema: { type: string }, description: The 9-digit session identifier. }
+      responses:
+        "200":
+          description: Session details.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ScreenShare" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+  /screen-shares/{screenShareCode}/stop:
+    post:
+      operationId: stopScreenShare
+      tags: [Screen Shares]
+      summary: Stop a share session
+      description: Programmatically terminates an active sharing session.
+      parameters:
+        - { name: screenShareCode, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Stop message sent successfully. }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+        "403": { $ref: "#/components/responses/Forbidden" }
+        "404": { $ref: "#/components/responses/NotFound" }
+  /recent-screen-shares:
+    get:
+      operationId: listRecentScreenShares
+      tags: [Screen Shares]
+      summary: Retrieve recent share sessions
+      description: Sessions that are pending, active, or ended within the last 5 minutes.
+      responses:
+        "200":
+          description: Array of recent sessions.
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: "#/components/schemas/ScreenShare" } }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+components:
+  securitySchemes:
+    accountId:
+      type: apiKey
+      in: header
+      name: accountid
+      description: Account identifier chosen at developer-account signup. May also be supplied as a query-string parameter.
+    authToken:
+      type: apiKey
+      in: header
+      name: authtoken
+      description: Secret authentication token issued with the developer account.
+  responses:
+    Unauthorized: { description: Invalid or missing credentials. }
+    Forbidden: { description: The credentials are valid but not authorized for this session. }
+    NotFound: { description: The share code does not exist or the session has already ended. }
+  schemas:
+    ScreenShare:
+      type: object
+      properties:
+        sessionId: { type: string, description: 9-digit share code. }
+        dateCreated: { type: integer, format: int64, description: Milliseconds from epoch. }
+        accountId: { type: string }
+        externalId: { type: string }
+        isSecure: { type: boolean }
+        showScreenleapBranding: { type: boolean }
+        isActive: { type: boolean }
+        startTime: { type: integer, format: int64 }
+        endTime: { type: integer, format: int64 }
+        totalViewers: { type: integer }
+        userMinutes: { type: number }
+        costInCents: { type: number }
+        title: { type: string }
+        apiCallbackUrl: { type: string, format: uri, description: Webhook URL that Screenleap POSTs session events to. }
+        participants:
+          type: array
+          items: { $ref: "#/components/schemas/Participant" }
+    Participant:
+      type: object
+      properties:
+        participantId: { type: string, description: 6-digit code. }
+        externalId: { type: string }
+        userAgent: { type: string }
+        sharingStartTime: { type: integer, format: int64 }
+        sharingEndTime: { type: integer, format: int64 }
+        durationInMinutes: { type: number }
+        isPresenter: { type: boolean }

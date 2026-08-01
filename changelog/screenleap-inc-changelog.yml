@@ -1,0 +1,30 @@
+generated: "2026-07-21"
+method: searched
+source: https://blog.screenleap.com/tag/screenleap-api/
+scheme: dated-announcements
+current_version: "2"
+entries:
+  - date: "2021-05-14"
+    title: Installation-Free Sharing Is Now Available for the Screenleap API
+    additions:
+      - Installation-free (browser-based) sharing for presenters on modern browsers
+      - Default presenter UI with toggles and controls
+      - 2-way audio conferencing (beta) and video conferencing (experimental)
+    breaking: false
+    highlights: Updated API defaults for presenter UI, resize and stop controls.
+  - date: "2015-08-03"
+    title: Recording Feature Now Available For the Screenleap API
+    additions:
+      - Recording via recordVideo=true, MP4 output with processing notifications
+      - Auto-record option
+    breaking: false
+    highlights: Recording billed at recording duration times the cost of 5 participants.
+  - date: "2013-09-18"
+    title: "Screenleap API, V2: New Sharing, Customization, and Integration Options"
+    additions:
+      - Native apps for Mac and Windows sharing
+      - Browser extension for sharing browser content only
+      - Customizable presenter controls and viewer page defaults
+      - JavaScript callbacks for integration events
+    breaking: true
+    highlights: Version 2 release; introduced breaking configuration and callback changes.

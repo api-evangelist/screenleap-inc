@@ -1,0 +1,41 @@
+generated: "2026-07-21"
+method: searched
+source: https://www.screenleap.com/api/native/doc/http-calls
+authentication:
+  style: apiKey
+  detail: accountid + authtoken request headers (accountid also accepted as query param)
+  ref: authentication/screenleap-inc-authentication.yml
+idempotency:
+  supported: false
+  notes: No idempotency key or safe-retry contract is documented for session creation.
+pagination:
+  style: none
+  detail: >-
+    List endpoints are filter-based (startedBefore/startedAfter/endedBefore/
+    endedAfter/externalId) and cap results at 1000; there are no page/cursor
+    parameters or next-page tokens.
+correlation:
+  external_id: >-
+    A caller-supplied externalId (max 192 chars) can be attached to a session
+    and to viewers, and is echoed back on retrieval for correlation/filtering.
+timestamps:
+  format: epoch-milliseconds
+  detail: dateCreated, startTime, endTime, sharingStartTime, sharingEndTime are integers in milliseconds from epoch.
+  date_format_param: >-
+    List queries accept a dateFormat parameter (Java SimpleDateFormat pattern)
+    to control formatting of returned dates.
+versioning:
+  style: uri-path
+  detail: Version is embedded in the base path (/v2); current major version is 2.
+  ref: lifecycle/screenleap-inc-lifecycle.yml
+errors:
+  envelope: HTTP status codes (401/403/404); no RFC 9457 problem+json envelope documented.
+  ref: errors/screenleap-inc-problem-types.yml
+callbacks:
+  webhook: >-
+    Each session carries an apiCallbackUrl; Screenleap POSTs session lifecycle
+    events (e.g. share ended) to it. Callback and redirect URLs are configured
+    in Developer Account Settings.
+  ref: asyncapi/screenleap-inc-webhooks.yml
+rate_limiting:
+  documented: false

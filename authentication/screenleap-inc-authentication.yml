@@ -1,0 +1,27 @@
+generated: "2026-07-21"
+method: searched
+source: https://www.screenleap.com/api/native/doc/http-calls
+docs: https://www.screenleap.com/api/native/quick-start
+summary:
+  types: [apiKey]
+  api_key_in: [header, query]
+  oauth2_flows: []
+  notes: >-
+    Every request must carry an accountid (chosen at developer-account signup)
+    and a secret authtoken. Both are sent as request headers; accountid may
+    alternatively be supplied as a query-string parameter. There is no OAuth,
+    OIDC or per-scope model.
+schemes:
+  - name: accountId
+    type: apiKey
+    in: header
+    parameter: accountid
+    also_accepts_query: true
+    description: Account identifier chosen when creating the developer account.
+    sources: [openapi/screenleap-inc-screen-sharing-openapi.yml]
+  - name: authToken
+    type: apiKey
+    in: header
+    parameter: authtoken
+    description: Secret authentication token issued with the developer account, retrievable from the Developer page under the Account menu.
+    sources: [openapi/screenleap-inc-screen-sharing-openapi.yml]

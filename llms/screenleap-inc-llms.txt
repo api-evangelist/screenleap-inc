@@ -1,0 +1,25 @@
+# Screenleap
+
+> Screenleap provides an API to add live screen sharing, video conferencing, audio conferencing and chat to websites and online products. Server-to-server REST/JSON creates a session; a hosted screenleap.js loader drives the presenter and a returned viewer URL renders the share to viewers. Billing is per-participant-minute with no subscription required.
+
+## API
+- [Screen Sharing API overview](https://www.screenleap.com/api): What the API does and how to add screen sharing to a site.
+- [HTTP Calls reference](https://www.screenleap.com/api/native/doc/http-calls): The five REST endpoints (create/get/list/recent/stop screen shares).
+- [Quick Start Guide](https://www.screenleap.com/api/native/quick-start): Minimal integration walkthrough.
+- [Presenter integration](https://www.screenleap.com/api/v2/presenter): Loading screenleap.js and starting a share.
+- [Viewer integration](https://www.screenleap.com/api/v1/viewer): Redirect or iframe-embed the viewer URL.
+
+## Specs & Artifacts
+- OpenAPI (reconstructed): openapi/screenleap-inc-screen-sharing-openapi.yml
+- Authentication (apiKey: accountid + authtoken): authentication/screenleap-inc-authentication.yml
+- Conventions: conventions/screenleap-inc-conventions.yml
+- Error catalog: errors/screenleap-inc-problem-types.yml
+- Webhooks: asyncapi/screenleap-inc-webhooks.yml
+- Lifecycle & versioning: lifecycle/screenleap-inc-lifecycle.yml
+
+## Docs
+- [Update to Version 2](https://www.screenleap.com/api/native/update): v1 to v2 breaking changes and deprecated options.
+- [FAQ](https://www.screenleap.com/api/faq): Common integration and account questions.
+- [Pricing](https://www.screenleap.com/api/pricing): Basic $0.003/min and White-Label $0.010/min per participant.
+- [Developer account](https://www.screenleap.com/signup/developer): Free developer signup for an accountid and authtoken.
+- [Blog](https://blog.screenleap.com/tag/screenleap-api/): API release announcements.

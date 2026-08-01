@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.screenleap.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 04:12:47 2026 GMT
+  hsts: true
+  hsts_max_age: 86400
+- host: api.screenleap.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 04:12:47 2026 GMT
+  hsts: true
+  hsts_max_age: 86400
+domains:
+- domain: screenleap.com
+  dnssec: true
+  caa:
+  - 0 issue "sectigo.com"
+  - 0 iodef "mailto:support@screenleap.com"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: none

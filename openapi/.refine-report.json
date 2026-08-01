@@ -1,0 +1,14 @@
+{
+  "provider": "screenleap-inc",
+  "sources": [
+    "screenleap-inc-screen-shares-api-openapi.yml"
+  ],
+  "outputs": [
+    "screenleap-inc-screen-shares-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

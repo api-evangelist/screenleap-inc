@@ -1,0 +1,33 @@
+generated: "2026-07-21"
+method: searched
+source: https://www.screenleap.com/api/v2/presenter
+docs: https://www.screenleap.com/api/doc/js-calls
+summary: >-
+  Screenleap ships a hosted client-side JavaScript library rather than a
+  registry-published SDK. The presenter page loads screenleap.js from
+  Screenleap's CDN and drives sessions through the global screenleap object;
+  viewers are shown via a returned viewer URL that can be embedded in an iframe.
+components:
+  - family: Presenter loader
+    name: screenleap.js
+    type: hosted-js-library
+    loader: https://integration.screenleap.com/screenleap.js
+    official: true
+    methods:
+      - screenleap.startSharing(presenterAppType, screenShareData, callbacks)
+      - screenleap.pauseSharing()
+      - screenleap.resumeSharing()
+      - screenleap.getScreenShareCode()
+      - screenleap.getViewerUrl()
+    callbacks:
+      - screenleap.onScreenShareEnd
+    description: >-
+      Included via a script tag on the presenter page; starts, pauses, resumes
+      and stops a share and exposes the share code and viewer URL.
+  - family: Viewer surface
+    name: Viewer URL / iframe embed
+    type: embeddable-surface
+    official: true
+    description: >-
+      The viewerUrl returned by createScreenShare is opened directly or embedded
+      in an iframe to render the live share to viewers.

@@ -1,23 +1,121 @@
 aid: screenleap-inc
 name: Screenleap Inc
-description: Screenleap Inc is a company surfaced as a portfolio company of y-combinator and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Screenleap is a Y Combinator-backed company whose API lets developers add live
+  screen sharing, video conferencing, audio conferencing and chat to their own
+  websites and online products. Integrations create a session server-to-server
+  over a REST/JSON HTTP interface (base https://api.screenleap.com/v2), load a
+  hosted screenleap.js library on the presenter's page, and render the share to
+  viewers through a returned viewer URL or embedded iframe. Authentication uses
+  an account id plus an auth token; billing is per participant-minute (Basic
+  $0.003/min, White-Label $0.010/min) with no Screenleap subscription required.
 url: https://raw.githubusercontent.com/api-evangelist/screenleap-inc/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.screenleap.com/img/screenleap-logo.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - y-combinator
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Screen Sharing
+- Video Conferencing
+- Collaboration
+- Real-Time Communication
+- WebRTC
+- Embedded
+- Developer Tools
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: screenleap-inc:screenleap-inc-screen-shares-api
+  name: Screenleap Inc Screen Shares API
+  description: Create, retrieve, list and stop screen sharing sessions.
+  humanURL: https://www.screenleap.com/api
+  baseURL: https://api.screenleap.com/v2
+  tags:
+  - Screen Shares
+  properties:
+  - type: OpenAPI
+    url: openapi/screenleap-inc-screen-shares-api-openapi.yml
+  - type: Documentation
+    url: https://www.screenleap.com/api/native/doc
+  - type: APIReference
+    url: https://www.screenleap.com/api/native/doc/http-calls
+  - type: GettingStarted
+    url: https://www.screenleap.com/api/native/quick-start
+common:
+- type: DomainSecurity
+  url: security/screenleap-inc-domain-security.yml
+- type: DeveloperPortal
+  url: https://www.screenleap.com/developer
+- type: Documentation
+  url: https://www.screenleap.com/api/doc
+- type: APIReference
+  url: https://www.screenleap.com/api/native/doc/http-calls
+- type: GettingStarted
+  url: https://www.screenleap.com/api/native/quick-start
+- type: Pricing
+  url: https://www.screenleap.com/api/pricing
+- type: SignUp
+  url: https://www.screenleap.com/signup/developer
+- type: TermsOfService
+  url: https://www.screenleap.com/terms
+- type: PrivacyPolicy
+  url: https://www.screenleap.com/privacy
+- type: Support
+  url: https://www.screenleap.com/support
+- type: Blog
+  url: https://blog.screenleap.com/tag/screenleap-api/
+- type: GitHubOrganization
+  url: https://github.com/Screenleap
+- type: Authentication
+  url: authentication/screenleap-inc-authentication.yml
+- type: Conventions
+  url: conventions/screenleap-inc-conventions.yml
+- type: ErrorCatalog
+  url: errors/screenleap-inc-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/screenleap-inc-lifecycle.yml
+- type: Deprecation
+  url: https://www.screenleap.com/api/native/update
+- type: ChangeLog
+  url: changelog/screenleap-inc-changelog.yml
+- type: Webhooks
+  url: asyncapi/screenleap-inc-webhooks.yml
+- type: Components
+  url: components/screenleap-inc-components.yml
+- type: Conformance
+  url: conformance/screenleap-inc-conformance.yml
+- type: DataModel
+  url: data-model/screenleap-inc-data-model.yml
+- type: WellKnown
+  url: well-known/screenleap-inc-well-known.yml
+- type: MCPServer
+  url: mcp/screenleap-inc-mcp.yml
+- type: LLMsTxt
+  url: llms/screenleap-inc-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
