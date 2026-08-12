@@ -67,6 +67,8 @@ apis:
   - type: GettingStarted
     url: https://www.screenleap.com/api/native/quick-start
 common:
+- type: Overlay
+  url: overlays/screenleap-inc-screen-sharing-overlay.yaml
 - type: DomainSecurity
   url: security/screenleap-inc-domain-security.yml
 - type: DeveloperPortal
