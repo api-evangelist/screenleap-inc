@@ -1,28 +1,33 @@
-generated: "2026-07-21"
+generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/screenleap-inc-screen-sharing-openapi.yml
-summary: >-
-  No official Screenleap MCP server was found. This is a candidate tool surface
-  derived one-to-one from the documented HTTP operations, for building an MCP
-  wrapper over the Screenleap Screen Sharing API.
+summary: No official Screenleap MCP server was found. This is a candidate tool surface derived one-to-one
+  from the documented HTTP operations, for building an MCP wrapper over the Screenleap Screen Sharing
+  API.
 server:
   name: screenleap
   transport: http
   url: null
 tools:
-  - name: create_screen_share
-    description: Start a new screen sharing session and return viewer URL and presenter data.
-    source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#createScreenShare
-  - name: get_screen_share
-    description: Retrieve details for a specific screen share session by code.
-    source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#getScreenShare
-  - name: list_screen_shares
-    description: Query completed screen share sessions by time range or external ID.
-    source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#listScreenShares
-  - name: list_recent_screen_shares
-    description: List pending, active, or recently ended screen share sessions.
-    source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#listRecentScreenShares
-  - name: stop_screen_share
-    description: Programmatically stop an active screen share session.
-    source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#stopScreenShare
+- name: create_screen_share
+  description: Start a new screen sharing session and return viewer URL and presenter data.
+  source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#createScreenShare
+- name: get_screen_share
+  description: Retrieve details for a specific screen share session by code.
+  source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#getScreenShare
+- name: list_screen_shares
+  description: Query completed screen share sessions by time range or external ID.
+  source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#listScreenShares
+- name: list_recent_screen_shares
+  description: List pending, active, or recently ended screen share sessions.
+  source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#listRecentScreenShares
+- name: stop_screen_share
+  description: Programmatically stop an active screen share session.
+  source_operation: openapi/screenleap-inc-screen-sharing-openapi.yml#stopScreenShare
+deployment:
+  mode: none
+  verified: derived
+  tools: 5
+  checked: '2026-08-12'
+  source: catalog MCP census

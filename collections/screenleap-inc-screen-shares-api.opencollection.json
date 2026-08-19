@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Screenleap Screen Sharing Screen Shares API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accountid",
+      "value": "{{accountid}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screen Shares",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve share sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.screenleap.com/v2/screen-shares",
+            "params": [
+              {
+                "name": "startedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch."
+              },
+              {
+                "name": "startedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch."
+              },
+              {
+                "name": "endedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch."
+              },
+              {
+                "name": "endedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch."
+              },
+              {
+                "name": "dateFormat",
+                "value": "",
+                "type": "query",
+                "description": "Java SimpleDateFormat pattern."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query successful share sessions matching the supplied filters (max 1000 results)."
+        },
+        {
+          "info": {
+            "name": "Create a screen share session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.screenleap.com/v2/screen-shares",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "External identifier used to correlate and filter sessions."
+              },
+              {
+                "name": "showScreenleapBranding",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "presenterFirstName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "presenterLastName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "screenSharingMode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "videoMode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "initialMediaSource",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "useBroadcastAudio",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "useComputerAudio",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allowRecording",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "recordOnStart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allowChat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxConcurrentViewers",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Initiates a new screen sharing session and returns the screenShareData the presenter app needs plus the viewerUrl to open for viewers."
+        },
+        {
+          "info": {
+            "name": "Retrieve a share session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.screenleap.com/v2/screen-shares/:screenShareCode",
+            "params": [
+              {
+                "name": "screenShareCode",
+                "value": "",
+                "type": "path",
+                "description": "The 9-digit session identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a share session"
+        },
+        {
+          "info": {
+            "name": "Stop a share session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.screenleap.com/v2/screen-shares/:screenShareCode/stop",
+            "params": [
+              {
+                "name": "screenShareCode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Programmatically terminates an active sharing session."
+        },
+        {
+          "info": {
+            "name": "Retrieve recent share sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.screenleap.com/v2/recent-screen-shares"
+          },
+          "docs": "Sessions that are pending, active, or ended within the last 5 minutes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
