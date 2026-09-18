@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Screenleap Screen Sharing Screen Shares API
   version: '2'
@@ -252,12 +252,12 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
+    Forbidden:
+      description: The credentials are valid but not authorized for this session.
     Unauthorized:
       description: Invalid or missing credentials.
     NotFound:
       description: The share code does not exist or the session has already ended.
-    Forbidden:
-      description: The credentials are valid but not authorized for this session.
   schemas:
     Participant:
       type: object
